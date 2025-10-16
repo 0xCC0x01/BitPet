@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BitPet - Adorable Desktop Pet</title>
+    <link rel="icon" href="assets/favicon.png" type="image/png" sizes="32x32">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+        }
+
+        body {
+            background-color: rgb(254, 252, 248);
+            color: #333;
+            line-height: 1.6;
+            padding-bottom: 60px;
+            background-image: url('assets/bg.svg');
+            background-repeat: repeat;
+        }
+
+        a.no-underline {
+            text-decoration: none;
+        }
+
+        /* 磨砂玻璃导航栏 */
+        .navbar {
+            position: sticky;
+            top: 0;
+            display: flex;
+            align-items: center;
+            padding: 15px 5%;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            z-index: 100;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: rgba(255, 167, 102);
+        }
+
+        /* 介绍区域 */
+        .intro {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .intro h1 {
+            font-size: 26px;
+            margin-bottom: 20px;
+            color: rgba(255, 167, 102);
+        }
+
+        .intro p {
+            font-size: 18px;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .app-store-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px 30px;
+            background: rgba(255, 167, 102);
+            color: white;
+            font-size: 20px;
+            font-weight: 600;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .app-store-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
+        }
+        
+        .app-store-btn i {
+            margin-right: 10px;
+            font-size: 22px;
+        }
+
+        /* 卡片区域 */
+        .cards-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .card {
+            display: flex;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 50px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
+        }
+
+        .card-content {
+            max-width: 500px;
+            flex: 1;
+            padding: 30px;
+        }
+
+        .card h2 {
+            font-size: 24px;
+            margin-bottom: 25px;
+            color: rgba(255, 167, 102);
+        }
+
+        .card p {
+            color: #555;
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        .card-image {
+            flex: 0 0 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            max-height: 280px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 页脚 */
+        footer {
+            text-align: center;
+            padding: 25px 20px;
+            margin-top: 40px;
+            color: #777;
+            font-size: 14px;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .card {
+                flex-direction: column;
+            }
+            
+            .card-image {
+                order: -1;
+                padding-bottom: 0;
+            }
+            
+            .intro h1 {
+                font-size: 28px;
+            }
+            
+            .intro p {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <a href = "index.html" class="no-underline">
+        <div class="logo">
+            <div class="logo-icon">
+                <img src="assets/appIcon.png">
+            </div>
+            <div class="logo-text">BitPet</div>
+        </div>
+        </a>
+    </nav>
+
+    <!-- 介绍区域 -->
+    <section class="intro">
+        <h1>BitPet - Adorable Desktop Pet</h1>
+        <p>Bring Adorable Desktop Pet on Your Mac! It’s not just a lively and cute puppy, it’s also your digital companion. It can bring you warm companionship, infusing your desktop with endless vitality and joy.</p>
+
+        <!-- App Store 按钮 -->
+        <a href="https://apps.apple.com/" class="app-store-btn">
+            <i></i>
+            Download for Mac
+        </a>
+    </section>
+
+    <!-- 卡片区域 -->
+    <div class="cards-container">
+        <!-- 卡片1 -->
+        <div class="card">
+            <div class="card-content">
+                <h2>Adorable Pet, Max Healing Vibes</h2>
+                <p>The cute pet comes with a variety of charming actions — blinking, smiling, wagging its tail, shaking its head, wandering around, running, and even lying down to rest when "tired". There are more lovely actions waiting for you to discover.</p>
+            </div>
+            <div class="card-image">
+                <img src="assets/frame1.png" alt="Adorable Pet">
+            </div>
+        </div>
+
+        <!-- 卡片2 -->
+        <div class="card">
+            <div class="card-content">
+                <h2>Effortless Interaction, Playful Companionship</h2>
+                <p>A simple tap lets you interact with it — feeding, giving water, playing, and bathing are all at your fingertips. Build an exclusive bond through easy operations, and enjoy healing moments anytime.</p>
+            </div>
+            <div class="card-image">
+                <img src="assets/frame2.png" alt="Effortless Interaction">
+            </div>
+        </div>
+
+        <!-- 卡片3 -->
+        <div class="card">
+            <div class="card-content">
+                <h2>Lightweight Edge-Snapping, No Work Interruption</h2>
+                <p>When studying or working, drag the pet to the screen edge, and it’ll snap automatically, only showing its little head to stay by your side. This keeps the cozy vibe while minimizing screen clutter and keeping you focused.</p>
+            </div>
+            <div class="card-image">
+                <img src="assets/frame3.png" alt="Edge-Snapping">
+            </div>
+        </div>
+
+        <!-- 卡片4 -->
+        <div class="card">
+            <div class="card-content">
+                <h2>Customizable to Your Habits</h2>
+                <p>Support customizing the pet’s action frequency, size, and direction etc. Adjust details as needed to make your desktop buddy fits your usage habits perfectly.</p>
+            </div>
+            <div class="card-image">
+                <img src="assets/frame4.png" alt="Customizable to Your Habits">
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer>
+        <div style="display: flex; justify-content: center; align-items: center; gap: 1rem;">
+            <span>&copy; 2025 0xCC. All rights reserved.</span>
+            <span>|</span>
+            <a href="privacy.html" class="footer-link">Privacy Policy</a>
+        </div>
+    </footer>
+</body>
+</html>
